@@ -1,0 +1,407 @@
+﻿<Window x:Class="wUtility.AmvalFrm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wUtility"
+        mc:Ignorable="d"
+        Title="AmvalFrm" Height="450" Width="800"
+         FlowDirection="RightToLeft" DataContextChanged="Window_DataContextChanged"
+        >
+
+    <Grid>
+
+
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*">
+
+            </RowDefinition>
+
+            <RowDefinition Height="57*">
+
+            </RowDefinition>
+        </Grid.RowDefinitions>
+        <telerik:RadTabControl 
+            Margin="0,41,0,1" 
+            ScrollViewer.HorizontalScrollBarVisibility="Visible" 
+            HorizontalContentAlignment="Stretch" 
+            FlowDirection="RightToLeft" 
+            TabStripPlacement="Left"     
+            TabOrientation="Vertical"  
+            Name="uiTabControl"
+            telerik:StyleManager.Theme="Green"
+            Align="Right" 
+            Grid.RowSpan="2" >
+
+
+
+
+            <telerik:RadTabItem 
+                x:Name="EditTabItem" 
+                Header="جزئیات"
+                Height="100" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top"                
+                Width="45" Margin="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="31*">
+
+                        </RowDefinition>
+                        <RowDefinition Height="41*">
+
+                        </RowDefinition>
+                        <RowDefinition Height="55*">
+
+                        </RowDefinition>
+                        <RowDefinition Height="34*">
+
+                        </RowDefinition>
+                        <RowDefinition Height="239*">
+
+                        </RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="85*">
+
+                        </ColumnDefinition>
+                        <ColumnDefinition Width="265*"/>
+                        <ColumnDefinition Width="349*">
+
+                        </ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <telerik:Label Content="کداموال"
+                    FontFamily="Tahoma"
+                    Foreground="#FF1F550B"
+                    HorizontalAlignment="Left"
+                    Margin="5,8,0,0"
+                    VerticalAlignment="Top" Height="32" Width="53" Grid.Row="1"/>
+
+
+                    <telerik:Label Content="بخش"
+                    FontFamily="Tahoma"
+                    Foreground="#FF1F550B"
+                    HorizontalAlignment="Left"
+                    Margin="9,10,0,1"
+                     Grid.Column="2" 
+                    Grid.Row="1" Width="42"/>
+
+                    <telerik:RadButton Content="..." 
+                        x:Name="uiPartsBtn"              
+                        HorizontalAlignment="Left" Height="22"     
+                        Margin="58,0,0,0" VerticalAlignment="Center"
+                        Width="39" telerik:StyleManager.Theme="Green"
+                        FontFamily="Tahoma" FontWeight="Bold"                  
+                        Foreground="#FF157E0A"                                 
+                        HorizontalContentAlignment="Center"
+                        Click="uiDoctorsBtn_Click"
+                        VerticalContentAlignment="Top"
+                        Grid.Row="1" Grid.Column="2"
+                     />
+
+
+                    <telerik:RadWatermarkTextBox               
+                        x:Name="uiAmvalCodeText"          
+                        FlowDirection="RightToLeft"
+                        Grid.Row="1" 
+                        HorizontalAlignment="Left"
+                        Height="22"
+                        Margin="52,0,0,0" 
+                        TextWrapping="Wrap" 
+                        VerticalAlignment="Center" 
+                        Width="182"  
+                        FontFamily="Tahoma" 
+                        telerik:StyleManager.Theme="Green" 
+                        Text="{Binding Path= AmvalCode, 
+                        UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                        SelectionOpacity="2" 
+                        Grid.ColumnSpan="2"/>
+
+                    <telerik:RadWatermarkTextBox               
+                         x:Name="uiPartCodeText"          
+                         FlowDirection="RightToLeft"
+                         Grid.Column="2"
+                         Grid.Row="1" 
+                         HorizontalAlignment="Left" Height="22" 
+                        Margin="258,0,0,0" TextWrapping="Wrap"  
+                        VerticalAlignment="Center" Width="77"         
+                        FontFamily="Tahoma"                       
+                        telerik:StyleManager.Theme="Green" 
+                        
+                        Text="{Binding Path= PartHISCode, 
+                        UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                        SelectionOpacity="2"/>
+
+
+                    <telerik:RadWatermarkTextBox               
+                        x:Name="uiTabagheText"          
+                        FlowDirection="LeftToRight"
+                        Grid.Row="2" 
+                        HorizontalAlignment="Left" Height="22"                 
+                        Margin="54,0,0,0" TextWrapping="Wrap"      
+                        VerticalAlignment="Center" Width="182"         
+                        FontFamily="Tahoma"                         
+                        telerik:StyleManager.Theme="Green" 
+                        Text="{Binding Path= Radif, 
+                        UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                        SelectionOpacity="2" Grid.ColumnSpan="2"/>
+
+
+
+
+
+                    <telerik:Label Content="طبقه"
+                    Grid.Row="2" 
+                    FontFamily="Tahoma"
+                    Foreground="#FF1F550B"
+                    HorizontalAlignment="Left"
+                    Margin="11,0,0,0"
+                    VerticalAlignment="Center" Height="35" Width="38"/>
+
+                    <telerik:RadWatermarkTextBox               
+                        x:Name="uiDescriptionKalaText"          
+                        FlowDirection="RightToLeft"
+                        Grid.Column="2"
+                        Grid.Row="2" 
+                        HorizontalAlignment="Left" 
+                        Height="47"
+                        Margin="58,0,0,0" 
+                        TextWrapping="Wrap"
+                        VerticalAlignment="Center" 
+                        Width="277"   
+                        FontFamily="Tahoma"
+                        telerik:StyleManager.Theme="Green" 
+                        Text="{Binding Path= DescriptionKala, 
+                        UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                        SelectionOpacity="2"/>
+
+                    <telerik:Label Content="شرح"
+                    Grid.Column="2"
+                    Grid.Row="2" 
+                    FontFamily="Tahoma"
+                    Foreground="#FF1F550B"
+                    HorizontalAlignment="Left"
+                    Margin="9,0,0,0"
+                    VerticalAlignment="Center" Height="47" Width="37"/>
+                    <telerik:RadAutoCompleteBox 
+                        HorizontalAlignment="Left" 
+                        Name="uiPartNameTxt"
+                        DisplayMemberPath = "PartName"      
+                        Margin="105,0,0,0" 
+                        Grid.Row="1" 
+                        VerticalAlignment="Center"
+                        Width="148" 
+                        telerik:StyleManager.Theme="Green"
+                        SelectionChanged="uiAutocom_SelectionChanged" 
+                        Height="22" 
+                        Grid.Column="2" 
+                        SelectionMode="Single" />
+
+                    <telerik:RadCollectionNavigator
+                 Name="uiNavigator"
+                Height="Auto" Margin="0,0,0,1" telerik:StyleManager.Theme="Green"
+                        CommandButtonsVisibility="All" 
+                        FontFamily="Tahoma" Foreground="#FF56B409" 
+                        IsHitTestVisible="True" 
+                        FontWeight="Medium" 
+                        Grid.ColumnSpan="3"/>
+
+                    <telerik:Label Content="نام"
+                    Grid.Row="3" 
+                    FontFamily="Tahoma"
+                    Foreground="#FF1F550B"
+                    HorizontalAlignment="Left"
+                    Margin="11,0,0,0"
+                    VerticalAlignment="Center" Height="34" Width="43"/>
+
+                    <telerik:RadWatermarkTextBox               
+                        x:Name="uiKalaNameText"          
+                        FlowDirection="LeftToRight"
+                        Grid.Row="3" 
+                        HorizontalAlignment="Left" 
+                        Height="22"                 
+                        Margin="54,0,0,0" 
+                        TextWrapping="Wrap"      
+                        VerticalAlignment="Center" 
+                        Width="182"         
+                        FontFamily="Tahoma"                         
+                        telerik:StyleManager.Theme="Green" 
+                        Text="{Binding Path= KalaName, 
+                               UpdateSourceTrigger=PropertyChanged, 
+                               Mode=TwoWay}"
+                        SelectionOpacity="2" 
+                        Grid.ColumnSpan="2"/>
+
+                    <telerik:Label Content="نوع"
+                    Grid.Row="4" 
+                    FontFamily="Tahoma"
+                    Foreground="#FF1F550B"
+                    HorizontalAlignment="Left"
+                    Margin="11,0,0,0"
+                    VerticalAlignment="Top" Height="30" Width="38"/>
+
+                    <telerik:RadWatermarkTextBox               
+                        x:Name="uiKindKalaText"          
+                        FlowDirection="LeftToRight"
+                        Grid.Row="4" 
+                        HorizontalAlignment="Left" Height="22"                 
+                        Margin="54,9,0,0" TextWrapping="Wrap"      
+                        VerticalAlignment="Top" Width="182"         
+                        FontFamily="Tahoma"                         
+                        telerik:StyleManager.Theme="Green" 
+                        Text="{Binding Path= KindKala, 
+                        UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                        SelectionOpacity="2" Grid.ColumnSpan="2"/>
+
+
+                </Grid>
+
+            </telerik:RadTabItem>
+            <telerik:RadTabItem x:Name="ShowTabItem" Header="نمایش" Height="100" 
+HorizontalAlignment="Left" VerticalAlignment="Top"                
+Width="45" Margin="0">
+
+                <telerik:RadGridView
+                    x:Name="uiAmalItGrid"
+                    FlowDirection="RightToLeft" 
+                    telerik:StyleManager.Theme="Green" 
+                    FontFamily="Tahoma"
+                    AutoGenerateColumns="False"
+                    Margin="0,0,-1,0"  MinHeight="200" 
+                    HorizontalContentAlignment="Stretch"                          
+                    ColumnWidth="*" 
+                    SelectionChanged="uiAmalItGrid_SelectionChanged"
+                    SelectedItem="{Binding ElementName=uiNavigator, Path=CurrentItem, 
+                    Mode=TwoWay}" CanUserDeleteRows="False" 
+                    CanUserInsertRows="False" 
+                    CanUserReorderColumns="False"
+                    CanUserResizeColumns="False" 
+                    FilteringMode="Popup"
+                    SnapsToDevicePixels="False" 
+                    IsFilteringAllowed="True" 
+                    IsReadOnly="True"  
+                    IsLocalizationLanguageRespected="False" 
+                    MouseDoubleClick="uiAmalItGrid_MouseDoubleClick" 
+>
+
+                    <telerik:RadGridView.Columns>
+
+
+                        <telerik:GridViewDataColumn
+                            DataMemberBinding="{Binding AmvalCode}"                                   
+                                Header="کدامورال" 
+                                Width="75"/>
+                        <telerik:GridViewDataColumn
+                            DataMemberBinding="{Binding Radif}"                                   
+                                Header=" طبقه"
+                                Width="35"/>
+                        <telerik:GridViewDataColumn
+                            DataMemberBinding="{Binding KalaName}"                                   
+                                 Header="نام" 
+                                 Width="55"/>
+                        <telerik:GridViewDataColumn
+                            DataMemberBinding="{Binding PartName}"                                   
+                                Header="بخش" 
+                                Width="45"/>
+                        <telerik:GridViewDataColumn
+                            DataMemberBinding="{Binding KindKala}"                                   
+                                Header="نوع" 
+                                Width="55"/>
+                        <telerik:GridViewDataColumn
+                            DataMemberBinding="{Binding DescriptionKala}"                                   
+                                    Header="شرح" />
+
+                    </telerik:RadGridView.Columns>
+
+
+                </telerik:RadGridView>
+
+
+
+
+
+
+            </telerik:RadTabItem>
+
+        </telerik:RadTabControl>
+
+        <telerik:RadMenu
+            HorizontalContentAlignment="Center"
+            Grid.Row="0" telerik:StyleManager.Theme="Green" 
+                         
+                         >
+            <telerik:RadMenuItem 
+                                 Name="uiNewMenuItem"
+                                 Click="uiNewMenuItem_Click_2"
+                ToolTip="جدید"
+                Margin="0,0,0,0"
+                                
+                                 >
+
+                <telerik:RadMenuItem.Icon>
+                    <Image Source="/Images/031-add.png" 
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch"
+               Stretch="Fill" Width="33" Height="22"  Margin="0,0,4,0" />
+                </telerik:RadMenuItem.Icon>
+
+            </telerik:RadMenuItem>
+            <telerik:RadMenuItem  
+                                 Name="uiEditItemMenu"
+                                 ToolTip="ویرایش"
+                                 Click="uiEditItemMenu_Click" HorizontalAlignment="Right" Width="40" Margin="0,0,14,0">
+                <telerik:RadMenuItem.Icon>
+                    <Image Source="/Images/058-edit.png" 
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch"
+               Stretch="Fill" Width="33" Height="22"  Margin="0,0,4,0" />
+                </telerik:RadMenuItem.Icon>
+
+            </telerik:RadMenuItem>
+            <telerik:RadMenuItem ToolTip="ذخیره"
+                                 Name="uiSaveItemMenu"
+                                 
+                                 Click="uiSaveItemMenu_Click" Margin="-10,0,10,0">
+
+                <telerik:RadMenuItem.Icon>
+                    <Image Source="/Images/044-secure.png" 
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch"
+               Stretch="Fill" Width="33" Height="22"  Margin="0,0,4,0" />
+                </telerik:RadMenuItem.Icon>
+
+
+            </telerik:RadMenuItem>
+            <telerik:RadMenuItem 
+                                 Name="uiCancelItemMenu"
+                                 ToolTip="انصراف"
+                                 Click="uiCancelItemMenu_Click">
+
+                <telerik:RadMenuItem.Icon>
+                    <Image Source="/Images/060-reload.png" 
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch"
+               Stretch="Fill" Width="33" Height="22"  Margin="0,0,4,0" />
+                </telerik:RadMenuItem.Icon>
+
+            </telerik:RadMenuItem>
+            <telerik:RadMenuItem ToolTip="حذف"
+                                 Name="uiDeleteItemMenu"
+                                 
+                                 Click="uiDeleteItemMenu_Click">
+                <telerik:RadMenuItem.Icon>
+                    <Image Source="/Images/059-remove.png" 
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch"
+               Stretch="Fill" Width="33" Height="22"  Margin="0,0,4,0" />
+                </telerik:RadMenuItem.Icon>
+
+
+            </telerik:RadMenuItem>
+        </telerik:RadMenu>
+    </Grid>
+</Window>

@@ -1,0 +1,1407 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wUtility"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="wUtility.SimilarityDatabaseForm"
+        mc:Ignorable="d"
+        Title="تشابه دیتابیس" Height="450" Width="800"
+        FlowDirection="RightToLeft" Background="#FF414F3F" FontFamily="Tahoma"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        >
+
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32*">
+
+            </RowDefinition>
+            <RowDefinition Height="387*">
+
+            </RowDefinition>
+        </Grid.RowDefinitions>
+
+        <telerik:RadTabControl HorizontalAlignment="Stretch" Margin="0,0,0,1" ScrollViewer.HorizontalScrollBarVisibility="Visible" HorizontalContentAlignment="Stretch" FlowDirection="RightToLeft" TabStripPlacement="Left"     TabOrientation="Vertical" 
+   Grid.Row="1"                                          telerik:StyleManager.Theme="Green" Align="Right" Grid.RowSpan="1" >
+
+
+
+
+
+
+
+            <telerik:RadTabItem x:Name="RadTabItem" Header="نمایش" Height="100" 
+HorizontalAlignment="Left" VerticalAlignment="Top"                
+Width="45" Margin="0">
+
+                <Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="41*" >
+
+                            </RowDefinition>
+
+                            <RowDefinition Height="167*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Margin="0,0,0,25">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180*">
+
+                                </ColumnDefinition>
+                                <ColumnDefinition Width="166*"/>
+                                <ColumnDefinition Width="345*">
+
+                                </ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <telerik:Label Content="Model" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Foreground="#FF256C28" Height="22" Width="120" Grid.Column="1"/>
+                            <telerik:RadComboBox HorizontalAlignment="Left" Margin="4,10,0,0" 
+                        x:Name="uiDatababasesModelCmb"
+                        VerticalAlignment="Top" Width="191" telerik:StyleManager.Theme="Green" Height="22"
+            SelectionChanged="uiDatababasesModelCmb_SelectionChanged" Grid.ColumnSpan="2"
+                                             />
+
+                            <telerik:RadComboBox HorizontalAlignment="Left" Margin="4,35,0,-9" 
+  
+                                             
+                                             
+                                             
+                                             DisplayMemberPath="DatasourceDatabaseName"
+                                             x:Name="uiDatasourceDatababasesCmb"
+   VerticalAlignment="Top" Width="191" telerik:StyleManager.Theme="Green" SelectionChanged="uiDatasourceDatababasesCmb_SelectionChanged" Height="22" Grid.ColumnSpan="2"/>
+
+                            <!--uiDatababaseConnected-->
+                            <telerik:Label Content="Datasource Database" HorizontalAlignment="Left" Margin="20,35,0,-9" VerticalAlignment="Top" Foreground="#FF256C28" Height="22" Width="127" Grid.Column="1"/>
+                            <Grid
+                            Grid.Column="2"
+                            FlowDirection="LeftToRight"
+                            >
+                                <telerik:RadComboBox HorizontalAlignment="Left" Margin="136,7,0,0" 
+    x:Name="uiDestenationDatababases"
+                  DisplayMemberPath="DestnationDatabaseName"                                   
+   VerticalAlignment="Top" Width="206" telerik:StyleManager.Theme="Green" SelectionChanged="uiDatababases2th_SelectionChanged" Height="22"/>
+
+
+                                <telerik:Label Content="Destenation Databases" HorizontalAlignment="Left" Margin="0,7,0,0" VerticalAlignment="Top" Foreground="#FF256C28"
+                                           FlowDirection="LeftToRight"
+                                           Height="22" Width="131"/>
+                                <telerik:Label Content=""
+                                               Name="uiDiscordCountLbl"
+                                               HorizontalAlignment="Left" Margin="0,28,0,0" VerticalAlignment="Top" Foreground="#FF256C28"
+                                           FlowDirection="LeftToRight"
+                                           Height="22" Width="131"/>
+                                <telerik:RadProgressBar
+                                    Name="uiProgressBar"
+                                    Maximum="100"
+                                    Minimum="0"
+                                    Value="0" Margin="50,30,3,10"
+                                    Visibility="Hidden" telerik:StyleManager.Theme="Green"
+                                    />
+                                <!--<ProgressBar
+                                    Name="uiProgressBar"
+                                    Maximum="5"
+                                    Value="0"
+                                    Margin="50,34,3,-6"
+                                    >
+                                    
+                                </ProgressBar>-->
+                            </Grid>
+                        </Grid>
+                        <Grid
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch" Margin="0,62,0,0" Grid.RowSpan="2"
+                        
+                        >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"
+                                              
+                                              >
+
+                                </ColumnDefinition>
+
+                            </Grid.ColumnDefinitions>
+
+
+                            <telerik:RadTabControl
+                            Grid.Column="0"
+                            HorizontalAlignment="Stretch"
+                                Margin="0,0,0,10" VerticalAlignment="Stretch" telerik:StyleManager.Theme="Green">
+
+
+
+
+                                <telerik:RadTabItem x:Name="ColumnsTabItem" Header="Columns" Height="40" Width="137" Margin="0">
+
+                                    <telerik:RadTabControl HorizontalAlignment="Stretch" Margin="0,0,0,-9" ScrollViewer.HorizontalScrollBarVisibility="Visible" HorizontalContentAlignment="Stretch" FlowDirection="RightToLeft" TabStripPlacement="Left"     TabOrientation="Vertical" 
+                                             telerik:StyleManager.Theme="Green" Align="Right" Grid.RowSpan="2" >
+
+
+                                        <telerik:RadTabItem x:Name="DatasourceTabItem" Header="DatasourceDatabse" 
+    HorizontalAlignment="Left" VerticalAlignment="Top"                    ScrollViewer.HorizontalScrollBarVisibility="Visible"        
+    Height="135" Width="46" Margin="0">
+
+
+
+                                            <telerik:RadGridView
+  x:Name="uiDatasourceDatabaseGrid"
+FlowDirection="RightToLeft" telerik:StyleManager.Theme="Green" FontFamily="Tahoma" AutoGenerateColumns="False"
+Margin="0,0,-1,0"  MinHeight="200" 
+    ScrollViewer.HorizontalScrollBarVisibility
+                                 ="Visible"            
+
+    ColumnWidth="*"                       
+                                    
+  SelectionChanged="uiDatasourceDatabaseGrid_SelectionChanged"
+                        >
+                                                <telerik:RadGridView.Columns
+                          
+                            >
+
+
+
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding RowNumber}"                              
+            Header="ردیف"  
+                Width="10"
+            UniqueName="RowNumber" />
+
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding TABLE_CATALOG}"                              
+            Header="دیتابیس" 
+            UniqueName="TABLE_CATALOG" />
+
+
+                                                    <telerik:GridViewDataColumn
+  DataMemberBinding="{Binding TABLE_NAME}"                                   
+                                    Header="نام جدول" />
+
+
+
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding COLUMN_NAME}"                                 
+                                    Header="ستون" UniqueName="COLUMN_NAME" />
+
+                                                    <telerik:GridViewCheckBoxColumn
+                    DataMemberBinding="{Binding IS_NULLABLE}"      Width="10"        
+            Header="Nullable" 
+            UniqueName="IS_NULLABLE"
+                                />
+
+
+                                                    <telerik:GridViewDataColumn 
+                DataMemberBinding="{Binding DATA_TYPE}"                 
+            Header="نوع" 
+            UniqueName="DATA_TYPE" />
+
+                                                    <telerik:GridViewDataColumn 
+                DataMemberBinding="{Binding CHARACTER_MAXIMUM_LENGTH}"                 
+            Header="طول" 
+            UniqueName="CHARACTER_MAXIMUM_LENGTH" />
+
+                                                    <telerik:GridViewDataColumn 
+                DataMemberBinding="{Binding NUMERIC_PRECISION}"                 
+            Header="PRECISION" 
+            UniqueName="NUMERIC_PRECISION" />
+
+                                                    <telerik:GridViewDataColumn 
+                DataMemberBinding="{Binding NUMERIC_PRECISION_RADIX}"                 
+            Header="RADIX" 
+            UniqueName="NUMERIC_PRECISION_RADIX" />
+
+                                                    <telerik:GridViewDataColumn 
+                DataMemberBinding="{Binding COLLATION_NAME}"                 
+            Header="COLLATION" 
+            UniqueName="COLLATION_NAME" />
+
+                                                    <!--<telerik:GridViewCheckBoxColumn 
+                DataMemberBinding="{Binding Constraint_Type}"                 
+            Header="کلید" 
+            UniqueName="Constraint_Type" />-->
+                                                    <telerik:GridViewCheckBoxColumn
+                    DataMemberBinding="{Binding Constraint_Type}"      Width="10"        
+            Header="کلید" 
+            UniqueName="Constraint_Type"
+                                />
+
+                                                    <telerik:GridViewDataColumn 
+                DataMemberBinding="{Binding CONSTRAINT_NAME}"                 
+            Header="Constraint" 
+            UniqueName="CONSTRAINT_NAME" />
+
+                                                    <telerik:GridViewCheckBoxColumn
+                    DataMemberBinding="{Binding IS_IDENTITY}"      Width="10"        
+            Header="Identity" 
+            UniqueName="IS_IDENTITY"
+                                />
+
+                                                </telerik:RadGridView.Columns>
+                                            </telerik:RadGridView>
+
+
+                                        </telerik:RadTabItem>
+
+
+                                        <telerik:RadTabItem x:Name="Database2ColumnTabItem" Header="DestenationDatabase" 
+    HorizontalAlignment="Left" VerticalAlignment="Top"                            
+    Height="137" Width="46" Margin="0">
+                                            <telerik:RadGridView
+  x:Name="uiDestenationDatabaseGrid"
+FlowDirection="RightToLeft" telerik:StyleManager.Theme="Green" FontFamily="Tahoma" AutoGenerateColumns="False"
+Margin="0,0,-1,-10"  MinHeight="200" 
+                            
+
+                            HorizontalContentAlignment="Stretch" 
+                                    
+ColumnWidth="*" SelectionChanged="uiSelectedDatabase_SelectionChanged"
+                        >
+                                                <telerik:RadGridView.Columns
+                           
+                            >
+
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding RowNumber}"                              
+            Header="ردیف" 
+            UniqueName="RowNumber" />
+
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding TABLE_CATALOG}"                              
+            Header="دیتابیس" 
+            UniqueName="TABLE_CATALOG" />
+
+
+                                                    <telerik:GridViewDataColumn
+  DataMemberBinding="{Binding TABLE_NAME}"                                   
+                                    Header="نام جدول" />
+
+
+
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding COLUMN_NAME}"                                 
+                                    Header="ستون" UniqueName="COLUMN_NAME" />
+
+                                                    <telerik:GridViewDataColumn 
+                DataMemberBinding="{Binding IS_NULLABLE}"                 
+            Header="Nullable" 
+            UniqueName="IS_NULLABLE" />
+
+                                                    <telerik:GridViewDataColumn 
+                DataMemberBinding="{Binding DATA_TYPE}"                 
+            Header="نوع" 
+            UniqueName="DATA_TYPE" />
+
+                                                    <telerik:GridViewDataColumn 
+                DataMemberBinding="{Binding CHARACTER_MAXIMUM_LENGTH}"                 
+            Header="طول" 
+            UniqueName="CHARACTER_MAXIMUM_LENGTH" />
+
+                                                    <telerik:GridViewDataColumn 
+                DataMemberBinding="{Binding NUMERIC_PRECISION}"                 
+            Header="PRECISION" 
+            UniqueName="NUMERIC_PRECISION" />
+
+                                                    <telerik:GridViewDataColumn 
+                DataMemberBinding="{Binding NUMERIC_PRECISION_RADIX}"                 
+            Header="RADIX" 
+            UniqueName="NUMERIC_PRECISION_RADIX" />
+
+                                                    <telerik:GridViewDataColumn 
+                DataMemberBinding="{Binding COLLATION_NAME}"                 
+            Header="COLLATION" 
+            UniqueName="COLLATION_NAME" />
+
+                                                    <!--<telerik:GridViewCheckBoxColumn 
+                DataMemberBinding="{Binding Constraint_Type}"                 
+            Header="کلید" 
+            UniqueName="Constraint_Type" />-->
+                                                    <telerik:GridViewCheckBoxColumn
+                    DataMemberBinding="{Binding Constraint_Type}"                 
+            Header="کلید" 
+            UniqueName="Constraint_Type"
+                                />
+
+                                                    <telerik:GridViewDataColumn 
+                DataMemberBinding="{Binding CONSTRAINT_NAME}"                 
+            Header="Constraint" 
+            UniqueName="CONSTRAINT_NAME" />
+                                                </telerik:RadGridView.Columns>
+                                            </telerik:RadGridView>
+
+
+
+
+
+
+                                        </telerik:RadTabItem>
+                                        <telerik:RadTabItem x:Name="DiscordColumnTabItem" Header="Discord" 
+    HorizontalAlignment="Left" VerticalAlignment="Top"                            
+    Height="137" Width="39" Margin="0">
+
+                                            <telerik:RadGridView
+  x:Name="uiDiscordDatabasesGrid"
+FlowDirection="RightToLeft" telerik:StyleManager.Theme="Green" FontFamily="Tahoma" AutoGenerateColumns="False"
+Margin="0,0,-1,-10"  MinHeight="200" 
+                            
+
+                            HorizontalContentAlignment="Stretch" 
+                                    
+ColumnWidth="*" SelectionChanged="uiSelectedDatabase_SelectionChanged"
+                        >
+                                                <telerik:RadGridView.Columns
+                           
+                            >
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding RowNumber}"                              
+            Header="ردیف" 
+            UniqueName="RowNumber" />
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding TABLE_CATALOG}"                              
+            Header="دیتابیس" 
+            UniqueName="TABLE_CATALOG" />
+
+
+                                                    <telerik:GridViewDataColumn
+  DataMemberBinding="{Binding TABLE_NAME}"                                   
+                                    Header="نام جدول" />
+
+
+
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding COLUMN_NAME}"                                 
+                                    Header="ستون" UniqueName="COLUMN_NAME" />
+
+                                                    <telerik:GridViewDataColumn 
+                DataMemberBinding="{Binding IS_NULLABLE}"                 
+            Header="Nullable" 
+            UniqueName="IS_NULLABLE" />
+
+                                                    <telerik:GridViewDataColumn 
+                DataMemberBinding="{Binding DATA_TYPE}"                 
+            Header="نوع" 
+            UniqueName="DATA_TYPE" />
+
+                                                    <telerik:GridViewDataColumn 
+                DataMemberBinding="{Binding CHARACTER_MAXIMUM_LENGTH}"                 
+            Header="طول" 
+            UniqueName="CHARACTER_MAXIMUM_LENGTH" />
+
+                                                    <telerik:GridViewDataColumn 
+                DataMemberBinding="{Binding NUMERIC_PRECISION}"                 
+            Header="PRECISION" 
+            UniqueName="NUMERIC_PRECISION" />
+
+                                                    <telerik:GridViewDataColumn 
+                DataMemberBinding="{Binding NUMERIC_PRECISION_RADIX}"                 
+            Header="RADIX" 
+            UniqueName="NUMERIC_PRECISION_RADIX" />
+
+                                                    <telerik:GridViewDataColumn 
+                DataMemberBinding="{Binding COLLATION_NAME}"                 
+            Header="COLLATION" 
+            UniqueName="COLLATION_NAME" />
+
+                                                    <!--<telerik:GridViewCheckBoxColumn 
+                DataMemberBinding="{Binding Constraint_Type}"                 
+            Header="کلید" 
+            UniqueName="Constraint_Type" />-->
+                                                    <telerik:GridViewCheckBoxColumn
+                    DataMemberBinding="{Binding Constraint_Type}"                 
+            Header="کلید" 
+            UniqueName="Constraint_Type"
+                                />
+
+                                                    <telerik:GridViewDataColumn 
+                DataMemberBinding="{Binding CONSTRAINT_NAME}"                 
+            Header="Constraint" 
+            UniqueName="CONSTRAINT_NAME" />
+                                                </telerik:RadGridView.Columns>
+                                            </telerik:RadGridView>
+
+
+
+
+                                        </telerik:RadTabItem>
+
+                                        <telerik:RadTabItem x:Name="ReportTabItem" Header="Scripts" 
+    HorizontalAlignment="Left" VerticalAlignment="Top"                            
+    Height="137" Width="39" Margin="0">
+
+
+                                            <telerik:RadGridView
+  x:Name="uiReportUpdatesGrid"
+FlowDirection="RightToLeft" telerik:StyleManager.Theme="Green" FontFamily="Tahoma" AutoGenerateColumns="False"
+Margin="0,0,-1,-10"  MinHeight="200" 
+                            
+
+                            HorizontalContentAlignment="Stretch" 
+                                    
+ColumnWidth="*" SelectionChanged="uiSelectedDatabase_SelectionChanged"
+                        >
+                                                <telerik:RadGridView.Columns
+                           
+                            >
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding ColumnName}"                              
+            Header="ستون" 
+            UniqueName="ColumnName" />
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding TableName}"                              
+            Header="جدول" 
+            UniqueName="TableName" />
+
+
+                                                    <telerik:GridViewDataColumn
+  DataMemberBinding="{Binding Script}"                                   
+                                    Header="شرح" />
+
+
+
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding Description}"                                 
+                                    Header="Script" UniqueName="COLUMN_NAME" />
+
+
+                                                </telerik:RadGridView.Columns>
+                                            </telerik:RadGridView>
+
+
+
+
+                                        </telerik:RadTabItem>
+
+
+                                        <telerik:RadTabItem x:Name="DataTypeTabItem" Header="Data Type" 
+    HorizontalAlignment="Left" VerticalAlignment="Top"                    ScrollViewer.HorizontalScrollBarVisibility="Visible"        
+    Height="135" Width="46" Margin="0">
+
+
+
+                                            <telerik:RadGridView
+  x:Name="uiDatasourceDataTypeGrid"
+FlowDirection="RightToLeft" telerik:StyleManager.Theme="Green" FontFamily="Tahoma" AutoGenerateColumns="False"
+Margin="0,0,-1,0"  MinHeight="200" 
+    ScrollViewer.HorizontalScrollBarVisibility
+                                 ="Visible"            
+
+    ColumnWidth="*"                       
+                                    
+  SelectionChanged="uiDatasourceDatabaseGrid_SelectionChanged"
+                        >
+                                                <telerik:RadGridView.Columns
+                          
+                            >
+
+
+
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding RowNumber}"                              
+            Header="ردیف"  
+                Width="10"
+            UniqueName="RowNumber" />
+
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding TABLE_CATALOG}"                              
+            Header="دیتابیس" 
+            UniqueName="TABLE_CATALOG" />
+
+
+                                                    <telerik:GridViewDataColumn
+  DataMemberBinding="{Binding TABLE_NAME}"                                   
+                                    Header="نام جدول" />
+
+
+
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding COLUMN_NAME}"                                 
+                                    Header="ستون" UniqueName="COLUMN_NAME" />
+
+                                                    <telerik:GridViewCheckBoxColumn
+                    DataMemberBinding="{Binding IS_NULLABLE}"      Width="10"        
+            Header="Nullable" 
+            UniqueName="IS_NULLABLE"
+                                />
+
+
+                                                    <telerik:GridViewDataColumn 
+                DataMemberBinding="{Binding DATA_TYPE}"                 
+            Header="نوع" 
+            UniqueName="DATA_TYPE" />
+
+                                                    <telerik:GridViewDataColumn 
+                DataMemberBinding="{Binding CHARACTER_MAXIMUM_LENGTH}"                 
+            Header="طول" 
+            UniqueName="CHARACTER_MAXIMUM_LENGTH" />
+
+                                                    <telerik:GridViewDataColumn 
+                DataMemberBinding="{Binding NUMERIC_PRECISION}"                 
+            Header="PRECISION" 
+            UniqueName="NUMERIC_PRECISION" />
+
+                                                    <telerik:GridViewDataColumn 
+                DataMemberBinding="{Binding NUMERIC_PRECISION_RADIX}"                 
+            Header="RADIX" 
+            UniqueName="NUMERIC_PRECISION_RADIX" />
+
+                                                    <telerik:GridViewDataColumn 
+                DataMemberBinding="{Binding COLLATION_NAME}"                 
+            Header="COLLATION" 
+            UniqueName="COLLATION_NAME" />
+
+                                                    <!--<telerik:GridViewCheckBoxColumn 
+                DataMemberBinding="{Binding Constraint_Type}"                 
+            Header="کلید" 
+            UniqueName="Constraint_Type" />-->
+                                                    <telerik:GridViewCheckBoxColumn
+                    DataMemberBinding="{Binding Constraint_Type}"      Width="10"        
+            Header="کلید" 
+            UniqueName="Constraint_Type"
+                                />
+
+                                                    <telerik:GridViewDataColumn 
+                DataMemberBinding="{Binding CONSTRAINT_NAME}"                 
+            Header="Constraint" 
+            UniqueName="CONSTRAINT_NAME" />
+
+                                                    <telerik:GridViewCheckBoxColumn
+                    DataMemberBinding="{Binding IS_IDENTITY}"      Width="10"        
+            Header="Identity" 
+            UniqueName="IS_IDENTITY"
+                                />
+
+                                                </telerik:RadGridView.Columns>
+                                            </telerik:RadGridView>
+
+
+                                        </telerik:RadTabItem>
+
+
+
+
+                                    </telerik:RadTabControl>
+
+                                </telerik:RadTabItem>
+
+
+                                <telerik:RadTabItem x:Name="ViewsTabItem" Header="Views" Height="36" Width="135" Margin="0">
+
+
+                                    <telerik:RadTabControl HorizontalAlignment="Stretch" Margin="0,0,0,-9" ScrollViewer.HorizontalScrollBarVisibility="Visible" HorizontalContentAlignment="Stretch" FlowDirection="RightToLeft" TabStripPlacement="Left"     TabOrientation="Vertical" 
+                                             telerik:StyleManager.Theme="Green" Align="Right" Grid.RowSpan="2" >
+
+
+                                        <telerik:RadTabItem x:Name="DataSourceTabItem" Header="Data Source" Height="135" Width="36" Margin="0">
+
+                                            <telerik:RadGridView
+  x:Name="uiDatasourceViewsGrid"
+FlowDirection="RightToLeft" telerik:StyleManager.Theme="Green" FontFamily="Tahoma" AutoGenerateColumns="False"
+Margin="0,0,-1,0"  MinHeight="200" 
+    ScrollViewer.HorizontalScrollBarVisibility
+                                 ="Visible"            
+
+    ColumnWidth="*"                       
+                                    
+  SelectionChanged="uiDatasourceDatabaseGrid_SelectionChanged"
+                        >
+                                                <telerik:RadGridView.Columns>
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding RowNumber}"                              
+            Header="ردیف"  
+           
+            UniqueName="RowNumber" />
+
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding TABLE_CATALOG}"                              
+            Header="دیتابیس" 
+            UniqueName="TABLE_CATALOG" />
+
+
+                                                    <telerik:GridViewDataColumn
+  DataMemberBinding="{Binding TABLE_NAME}"                                   
+                                    Header="نام " />
+
+
+
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding TABLE_SCHEMA}"                                 
+                                    Header="SCHEMA" UniqueName="COLUMN_NAME" />
+
+
+
+                                                </telerik:RadGridView.Columns>
+                                            </telerik:RadGridView>
+
+
+
+                                        </telerik:RadTabItem>
+
+
+                                        <telerik:RadTabItem x:Name="DestenationTabItem" Header="Destenation" Height="135" Width="37" Margin="0">
+                                            <telerik:RadGridView
+  x:Name="uiDestenationViewsGrid"
+FlowDirection="RightToLeft" telerik:StyleManager.Theme="Green" FontFamily="Tahoma" AutoGenerateColumns="False"
+Margin="0,0,-1,0"  MinHeight="200" 
+    ScrollViewer.HorizontalScrollBarVisibility
+                                 ="Visible"            
+
+    ColumnWidth="*"                       
+                                    
+  SelectionChanged="uiDatasourceDatabaseGrid_SelectionChanged"
+                        >
+                                                <telerik:RadGridView.Columns>
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding RowNumber}"                              
+            Header="ردیف"  
+           
+            UniqueName="RowNumber" />
+
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding TABLE_CATALOG}"                              
+            Header="دیتابیس" 
+            UniqueName="TABLE_CATALOG" />
+
+
+                                                    <telerik:GridViewDataColumn
+  DataMemberBinding="{Binding TABLE_NAME}"                                   
+                                    Header="نام " />
+
+
+
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding TABLE_SCHEMA}"                                 
+                                    Header="SCHEMA" UniqueName="COLUMN_NAME" />
+
+
+
+                                                </telerik:RadGridView.Columns>
+                                            </telerik:RadGridView>
+
+
+                                        </telerik:RadTabItem>
+
+                                        <telerik:RadTabItem  x:Name="ViewsDiscordTabItem" Header="Discord" Height="135" Width="37" Margin="0">
+
+                                            <telerik:RadGridView
+  x:Name="uiDiscordViewsGrid"
+FlowDirection="RightToLeft" telerik:StyleManager.Theme="Green" FontFamily="Tahoma" AutoGenerateColumns="False"
+Margin="0,0,-1,0"  MinHeight="200" 
+    ScrollViewer.HorizontalScrollBarVisibility
+                                 ="Visible"            
+
+    ColumnWidth="*"                       
+                                    
+  SelectionChanged="uiDatasourceDatabaseGrid_SelectionChanged"
+                        >
+                                                <telerik:RadGridView.Columns>
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding RowNumber}"                              
+            Header="ردیف"  
+           
+            UniqueName="RowNumber" />
+
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding TABLE_CATALOG}"                              
+            Header="دیتابیس" 
+            UniqueName="TABLE_CATALOG" />
+
+
+                                                    <telerik:GridViewDataColumn
+  DataMemberBinding="{Binding TABLE_NAME}"                                   
+                                    Header="نام " />
+
+
+
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding TABLE_SCHEMA}"                                 
+                                    Header="SCHEMA" UniqueName="COLUMN_NAME" />
+
+
+
+                                                </telerik:RadGridView.Columns>
+                                            </telerik:RadGridView>
+
+
+
+                                        </telerik:RadTabItem>
+                                    </telerik:RadTabControl>
+
+
+
+                                </telerik:RadTabItem>
+                                <telerik:RadTabItem  
+                                    x:Name="SpsTabItem" Header="Stored  Procedures" Height="36" Width="135" Margin="0"
+                                    >
+
+
+                                    <telerik:RadTabControl HorizontalAlignment="Stretch" Margin="0,0,0,-9" ScrollViewer.HorizontalScrollBarVisibility="Visible" HorizontalContentAlignment="Stretch" FlowDirection="RightToLeft" TabStripPlacement="Left"     TabOrientation="Vertical" 
+                                             telerik:StyleManager.Theme="Green" Align="Right" Grid.RowSpan="2" >
+
+
+                                        <telerik:RadTabItem  x:Name="SpsDataSourceTabItem" Header="Data Source" Height="135" Width="36" Margin="0">
+
+                                            <telerik:RadGridView
+  x:Name="uiDatasourceSpsGrid"
+FlowDirection="RightToLeft" telerik:StyleManager.Theme="Green" FontFamily="Tahoma" AutoGenerateColumns="False"
+Margin="0,0,-1,0"  MinHeight="200" 
+    ScrollViewer.HorizontalScrollBarVisibility
+                                 ="Visible"            
+
+    ColumnWidth="*"                       
+                                    
+  SelectionChanged="uiDatasourceDatabaseGrid_SelectionChanged"
+                        >
+                                                <telerik:RadGridView.Columns>
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding RowNumber}"                              
+            Header="ردیف"  
+           
+            UniqueName="RowNumber" />
+
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding ROUTINE_CATALOG}"                              
+            Header="دیتابیس" 
+            UniqueName="TABLE_CATALOG" />
+
+
+                                                    <telerik:GridViewDataColumn
+  DataMemberBinding="{Binding ROUTINE_NAME}"                                   
+                                    Header="نام " />
+
+
+
+                                                    
+
+
+
+                                                </telerik:RadGridView.Columns>
+                                            </telerik:RadGridView>
+
+
+
+                                        </telerik:RadTabItem>
+
+
+                                        <telerik:RadTabItem  x:Name="DestenationSpsTabItem" Header="Destenation" Height="135" Width="37" Margin="0">
+                                            <telerik:RadGridView
+  x:Name="uiDestenationSpsGrid"
+FlowDirection="RightToLeft" telerik:StyleManager.Theme="Green" FontFamily="Tahoma" AutoGenerateColumns="False"
+Margin="0,0,-1,0"  MinHeight="200" 
+    ScrollViewer.HorizontalScrollBarVisibility
+                                 ="Visible"            
+
+    ColumnWidth="*"                       
+                                    
+  SelectionChanged="uiDatasourceDatabaseGrid_SelectionChanged"
+                        >
+                                                <telerik:RadGridView.Columns>
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding RowNumber}"                              
+            Header="ردیف"  
+           
+            UniqueName="RowNumber" />
+
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding ROUTINE_CATALOG}"                              
+            Header="دیتابیس" 
+            UniqueName="TABLE_CATALOG" />
+
+
+                                                    <telerik:GridViewDataColumn
+  DataMemberBinding="{Binding ROUTINE_NAME}"                                   
+                                    Header="نام " />
+
+
+
+                                                    
+
+
+
+                                                </telerik:RadGridView.Columns>
+                                            </telerik:RadGridView>
+
+
+                                        </telerik:RadTabItem>
+
+                                        <telerik:RadTabItem  x:Name="SpsDiscordTabItem" Header="Discord" Height="135" Width="37" Margin="0">
+
+                                            <telerik:RadGridView
+  x:Name="uiDiscordSpsGrid"
+FlowDirection="RightToLeft" telerik:StyleManager.Theme="Green" FontFamily="Tahoma" AutoGenerateColumns="False"
+Margin="0,0,-1,0"  MinHeight="200" 
+    ScrollViewer.HorizontalScrollBarVisibility
+                                 ="Visible"            
+
+    ColumnWidth="*"                       
+                                    
+  SelectionChanged="uiDatasourceDatabaseGrid_SelectionChanged"
+                        >
+                                                <telerik:RadGridView.Columns>
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding RowNumber}"                              
+            Header="ردیف"  
+           
+            UniqueName="RowNumber" />
+
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding ROUTINE_CATALOG}"                              
+            Header="دیتابیس" 
+            UniqueName="TABLE_CATALOG" />
+
+
+                                                    <telerik:GridViewDataColumn
+  DataMemberBinding="{Binding ROUTINE_NAME}"                                   
+                                    Header="نام " />
+
+
+
+                                                    
+
+
+
+                                                </telerik:RadGridView.Columns>
+                                            </telerik:RadGridView>
+
+
+
+                                        </telerik:RadTabItem>
+                                    </telerik:RadTabControl>
+
+                                </telerik:RadTabItem>
+
+                                <telerik:RadTabItem  
+                                    x:Name="FunctionsTabItem" Header="Functions" Height="36" Width="135" Margin="0"
+                                    >
+
+
+                                    <telerik:RadTabControl HorizontalAlignment="Stretch" Margin="0,0,0,-9" ScrollViewer.HorizontalScrollBarVisibility="Visible" HorizontalContentAlignment="Stretch" FlowDirection="RightToLeft" TabStripPlacement="Left"     TabOrientation="Vertical" 
+                                             telerik:StyleManager.Theme="Green" Align="Right" Grid.RowSpan="2" >
+
+
+                                        <telerik:RadTabItem   x:Name="FunctionsDataSourceTabItem" Header="Data Source" Height="135" Width="36" Margin="0">
+
+                                            <telerik:RadGridView
+  x:Name="uiDatasourceFunctionsGrid"
+FlowDirection="RightToLeft" telerik:StyleManager.Theme="Green" FontFamily="Tahoma" AutoGenerateColumns="False"
+Margin="0,0,-1,0"  MinHeight="200" 
+    ScrollViewer.HorizontalScrollBarVisibility
+                                 ="Visible"            
+
+    ColumnWidth="*"                       
+                                    
+  SelectionChanged="uiDatasourceDatabaseGrid_SelectionChanged"
+                        >
+                                                <telerik:RadGridView.Columns>
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding RowNumber}"                              
+            Header="ردیف"  
+           
+            UniqueName="RowNumber" />
+
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding name}"                              
+            Header="نام" 
+            UniqueName="TABLE_CATALOG" />
+
+
+                                                    <telerik:GridViewDataColumn
+  DataMemberBinding="{Binding type_desc}"                                   
+                                    Header="type_desc" />
+
+
+
+
+
+
+
+                                                </telerik:RadGridView.Columns>
+                                            </telerik:RadGridView>
+
+
+
+                                        </telerik:RadTabItem>
+
+
+                                        <telerik:RadTabItem  x:Name="DestenationFunctionsTabItem" Header="Destenation" Height="135" Width="37" Margin="0">
+                                            <telerik:RadGridView
+  x:Name="uiDestenationFunctionsGrid"
+FlowDirection="RightToLeft" telerik:StyleManager.Theme="Green" FontFamily="Tahoma" AutoGenerateColumns="False"
+Margin="0,0,-1,0"  MinHeight="200" 
+    ScrollViewer.HorizontalScrollBarVisibility
+                                 ="Visible"            
+
+    ColumnWidth="*"                       
+                                    
+  SelectionChanged="uiDatasourceDatabaseGrid_SelectionChanged"
+                        >
+                                                <telerik:RadGridView.Columns>
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding RowNumber}"                              
+            Header="ردیف"  
+           
+            UniqueName="RowNumber" />
+
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding name}"                              
+            Header="نام" 
+            UniqueName="name" />
+
+
+                                                    <telerik:GridViewDataColumn
+  DataMemberBinding="{Binding type_desc}"                                   
+                                    Header="type_desc " />
+
+
+
+
+
+
+
+                                                </telerik:RadGridView.Columns>
+                                            </telerik:RadGridView>
+
+
+                                        </telerik:RadTabItem>
+
+                                        <telerik:RadTabItem   x:Name="FunctionsDiscordTabItem" Header="Discord" Height="135" Width="37" Margin="0">
+
+                                            <telerik:RadGridView
+  x:Name="uiDiscordFunctionsGrid"
+FlowDirection="RightToLeft" telerik:StyleManager.Theme="Green" FontFamily="Tahoma" AutoGenerateColumns="False"
+Margin="0,0,-1,0"  MinHeight="200" 
+    ScrollViewer.HorizontalScrollBarVisibility
+                                 ="Visible"            
+
+    ColumnWidth="*"                       
+                                    
+  SelectionChanged="uiDatasourceDatabaseGrid_SelectionChanged"
+                        >
+                                                <telerik:RadGridView.Columns>
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding RowNumber}"                              
+            Header="ردیف"  
+           
+            UniqueName="RowNumber" />
+
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding name}"                              
+            Header="نام" 
+            UniqueName="name" />
+
+
+                                                    <telerik:GridViewDataColumn
+  DataMemberBinding="{Binding type_desc}"                                   
+                                    Header="type_desc " />
+
+
+
+
+
+
+
+                                                </telerik:RadGridView.Columns>
+                                            </telerik:RadGridView>
+
+
+
+                                        </telerik:RadTabItem>
+                                    </telerik:RadTabControl>
+
+                                </telerik:RadTabItem>
+
+
+                                <telerik:RadTabItem  
+                                    x:Name="IndexesTabItem" Header="Indexes" Height="36" Width="135" Margin="0"
+                                    >
+
+
+                                    <telerik:RadTabControl HorizontalAlignment="Stretch" Margin="0,0,0,-9" ScrollViewer.HorizontalScrollBarVisibility="Visible" HorizontalContentAlignment="Stretch" FlowDirection="RightToLeft" TabStripPlacement="Left"     TabOrientation="Vertical" 
+                                             telerik:StyleManager.Theme="Green" Align="Right" Grid.RowSpan="2" >
+
+
+                                        <telerik:RadTabItem   x:Name="IndexesDataSourceTabItem" Header="Data Source" Height="135" Width="36" Margin="0">
+
+                                            <telerik:RadGridView
+  x:Name="uiDatasourceIndexesGrid"
+FlowDirection="RightToLeft" telerik:StyleManager.Theme="Green" FontFamily="Tahoma" AutoGenerateColumns="False"
+Margin="0,0,-1,0"  MinHeight="200" 
+    ScrollViewer.HorizontalScrollBarVisibility
+                                 ="Visible"            
+
+    ColumnWidth="*"                       
+                                    
+  SelectionChanged="uiDatasourceDatabaseGrid_SelectionChanged"
+                        >
+                                                <telerik:RadGridView.Columns>
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding RowNumber}"                              
+            Header="ردیف"  
+           
+            UniqueName="RowNumber" />
+
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding Database_Name}"                              
+            Header="دیتابیس" 
+            UniqueName="Database_Name" />
+
+
+                                                    <telerik:GridViewDataColumn
+  DataMemberBinding="{Binding TableName}"                                   
+                                    Header="جدول" />
+
+
+                                                    <telerik:GridViewDataColumn
+  DataMemberBinding="{Binding IndexName}"                                   
+                                    Header="نام" />
+                                                    <telerik:GridViewDataColumn
+  DataMemberBinding="{Binding ColumnName}"                                   
+                                    Header="ستون" />
+                                                    
+
+
+
+                                                </telerik:RadGridView.Columns>
+                                            </telerik:RadGridView>
+
+
+
+                                        </telerik:RadTabItem>
+
+
+                                        <telerik:RadTabItem  x:Name="DestenationIndexesTabItem" Header="Destenation" Height="135" Width="37" Margin="0">
+                                            <telerik:RadGridView
+  x:Name="uiDestenationIndexesGrid"
+FlowDirection="RightToLeft" telerik:StyleManager.Theme="Green" FontFamily="Tahoma" AutoGenerateColumns="False"
+Margin="0,0,-1,0"  MinHeight="200" 
+    ScrollViewer.HorizontalScrollBarVisibility
+                                 ="Visible"            
+
+    ColumnWidth="*"                       
+                                    
+  SelectionChanged="uiDatasourceDatabaseGrid_SelectionChanged"
+                        >
+                                                <telerik:RadGridView.Columns>
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding RowNumber}"                              
+            Header="ردیف"  
+           
+            UniqueName="RowNumber" />
+
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding Database_Name}"                              
+            Header="دیتابیس" 
+            UniqueName="Database_Name" />
+
+
+                                                    <telerik:GridViewDataColumn
+  DataMemberBinding="{Binding TableName}"                                   
+                                    Header="جدول" />
+
+
+                                                    <telerik:GridViewDataColumn
+  DataMemberBinding="{Binding IndexName}"                                   
+                                    Header="نام" />
+                                                    <telerik:GridViewDataColumn
+  DataMemberBinding="{Binding ColumnName}"                                   
+                                    Header="ستون" />
+
+
+
+
+                                                </telerik:RadGridView.Columns>
+                                            </telerik:RadGridView>
+
+
+                                        </telerik:RadTabItem>
+
+                                        <telerik:RadTabItem   x:Name="IndexesDiscordTabItem" Header="Discord" Height="135" Width="37" Margin="0">
+
+                                            <telerik:RadGridView
+  x:Name="uiDiscordIndexesGrid"
+FlowDirection="RightToLeft" telerik:StyleManager.Theme="Green" FontFamily="Tahoma" AutoGenerateColumns="False"
+Margin="0,0,-1,0"  MinHeight="200" 
+    ScrollViewer.HorizontalScrollBarVisibility
+                                 ="Visible"            
+
+    ColumnWidth="*"                       
+                                    
+  SelectionChanged="uiDatasourceDatabaseGrid_SelectionChanged"
+                        >
+                                                <telerik:RadGridView.Columns>
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding RowNumber}"                              
+            Header="ردیف"  
+           
+            UniqueName="RowNumber" />
+
+                                                    <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding Database_Name}"                              
+            Header="دیتابیس" 
+            UniqueName="Database_Name" />
+
+
+                                                    <telerik:GridViewDataColumn
+  DataMemberBinding="{Binding TableName}"                                   
+                                    Header="جدول" />
+
+
+                                                    <telerik:GridViewDataColumn
+  DataMemberBinding="{Binding IndexName}"                                   
+                                    Header="نام" />
+                                                    <telerik:GridViewDataColumn
+  DataMemberBinding="{Binding ColumnName}"                                   
+                                    Header="ستون" />
+
+
+
+
+                                                </telerik:RadGridView.Columns>
+                                            </telerik:RadGridView>
+
+
+
+                                        </telerik:RadTabItem>
+                                    </telerik:RadTabControl>
+
+                                </telerik:RadTabItem>
+
+
+
+                            </telerik:RadTabControl>
+
+
+                        </Grid>
+
+
+                    </Grid>
+                </Grid>
+
+
+
+
+
+
+            </telerik:RadTabItem>
+            <telerik:RadTabItem x:Name="RadTabItem1" Header="جزئیات" 
+    HorizontalAlignment="Left" VerticalAlignment="Top"                            
+    Height="100" Width="46" Margin="0">
+                <Grid Background="Transparent"/>
+            </telerik:RadTabItem>
+
+
+        </telerik:RadTabControl>
+        <telerik:RadMenu HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"
+            HorizontalContentAlignment="Stretch"
+            Grid.Row="0" telerik:StyleManager.Theme="Green"
+                         
+                         >
+            <telerik:RadMenuItem 
+                                 Name="uiDifferenceMenuItem"
+                                 Click="uiDifferenceMenuItem_Click"
+                                 ToolTip="دیتابیس مبدا" Margin="5,0,0,0"
+                                 
+                Width="37"
+                                 >
+
+                <telerik:RadMenuItem.Icon>
+                    <Image Source="/Images/DatasourceDatabase.png" 
+                           HorizontalAlignment="Stretch"
+               Stretch="Fill" Width="37" Height="39" VerticalAlignment="Top" Margin="-2,0,0,0" />
+                </telerik:RadMenuItem.Icon>
+
+            </telerik:RadMenuItem>
+            <telerik:RadMenuItem 
+                                 Name="uiDDiffrenceItemMenu"
+                                  ToolTip="دیتابیس مقصد" 
+                                 Click="uiDDiffrenceItemMenu_Click"
+                 Margin="5,0,0,0"
+                Width="37"
+                >
+
+                <telerik:RadMenuItem.Icon>
+                    <Image Source="/Images/DestnationDatabase.png" 
+                           HorizontalAlignment="Stretch"
+               Stretch="Fill" Margin="-2,0,0,0" Width="37" Height="39" VerticalAlignment="Top" />
+                </telerik:RadMenuItem.Icon>
+
+
+
+            </telerik:RadMenuItem>
+            <telerik:RadMenuItem 
+                                 Name="uiExcute"
+                                  ToolTip="بروزرسانی" 
+                                 Click="uiExcute_Click"
+                 Margin="5,0,0,0"
+                Width="37"
+                >
+
+                <telerik:RadMenuItem.Icon>
+                    <Image Source="/Images/process.png" 
+                           HorizontalAlignment="Stretch"
+               Stretch="Fill" Margin="-2,0,0,0" Width="37" Height="39" VerticalAlignment="Top" />
+                </telerik:RadMenuItem.Icon>
+
+
+
+            </telerik:RadMenuItem>
+            <telerik:RadMenuItem 
+                                 Name="uiShowDataYpe"
+                                  ToolTip="Data Type" 
+                                 Click="uiShowDataYpe_Click"
+                 Margin="5,0,0,0"
+                Width="37"
+                >
+
+                <telerik:RadMenuItem.Icon>
+                    <Image Source="/Images/ShowDataType.png" 
+                           HorizontalAlignment="Stretch"
+               Stretch="Fill" Margin="-2,0,0,0" Width="37" Height="39" VerticalAlignment="Top" />
+                </telerik:RadMenuItem.Icon>
+
+
+
+            </telerik:RadMenuItem>
+
+            <telerik:RadMenuItem 
+                                 Name="uiChangeDataYpe"
+                                  ToolTip="تغییر" 
+                                 Click="uiChangeDataYpe_Click"
+                 Margin="5,0,0,0"
+                Width="37"
+                >
+
+                <telerik:RadMenuItem.Icon>
+                    <Image Source="/Images/ChangeDataType.png" 
+                           HorizontalAlignment="Stretch"
+               Stretch="Fill" Margin="-2,0,0,0" Width="37" Height="39" VerticalAlignment="Top" />
+                </telerik:RadMenuItem.Icon>
+
+
+
+            </telerik:RadMenuItem>
+
+            <telerik:RadMenuItem 
+                                 Name="uiDiscordViews"
+                                  ToolTip="Views" 
+                                 Click="uiDiscordViews_Click"
+                 Margin="5,0,0,0"
+                Width="37"
+                >
+
+                <telerik:RadMenuItem.Icon>
+                    <Image Source="/Images/DiscordView.png" 
+                           HorizontalAlignment="Stretch"
+               Stretch="Fill" Margin="-2,0,0,0" Width="37" Height="39" VerticalAlignment="Top" />
+                </telerik:RadMenuItem.Icon>
+
+
+
+            </telerik:RadMenuItem>
+
+            <telerik:RadMenuItem 
+                                 Name="uiCreateViews"
+                                  ToolTip="Create Views" 
+                Margin="5,0,0,0"
+                Width="37"
+                                 Click="uiCreateViews_Click">
+
+                <telerik:RadMenuItem.Icon>
+                    <Image Source="/Images/createView.png" 
+                           HorizontalAlignment="Stretch"
+               Stretch="Fill" Margin="-2,-2,0,0" Width="37" Height="39" VerticalAlignment="Top" />
+                </telerik:RadMenuItem.Icon>
+
+
+
+            </telerik:RadMenuItem>
+
+            <telerik:RadMenuItem 
+                                 Name="uiSpsDiscordShow"
+                                  ToolTip="Stored Procedures" 
+                                 Click="uiSpsDiscordShow_Click"
+                 Margin="5,0,0,0"
+                Width="37"
+                >
+
+                <telerik:RadMenuItem.Icon>
+                    <Image Source="/Images/SpsShow.png" 
+                           HorizontalAlignment="Stretch"
+               Stretch="Fill" Margin="-2,0,0,0" Width="37" Height="39" VerticalAlignment="Top" />
+                </telerik:RadMenuItem.Icon>
+
+
+
+            </telerik:RadMenuItem>
+            <telerik:RadMenuItem 
+                                 Name="uiFunctionsDiscord"
+                                  ToolTip="Functions" 
+                                 Click="uiFunctionsDiscord_Click"
+                 Margin="5,0,0,0"
+                Width="37"
+                >
+
+                <telerik:RadMenuItem.Icon>
+                    <Image Source="/Images/Function.png" 
+                           HorizontalAlignment="Stretch"
+               Stretch="Fill" Margin="-2,0,0,0" Width="37" Height="39" VerticalAlignment="Top" />
+                </telerik:RadMenuItem.Icon>
+
+
+
+            </telerik:RadMenuItem>
+
+            <telerik:RadMenuItem 
+                                 Name="uiFunctionsCreate"
+                                  ToolTip="Create Functions" 
+                                 Click="uiFunctionsCreate_Click"
+                  Margin="5,0,0,0"
+                Width="37"
+                >
+
+                <telerik:RadMenuItem.Icon>
+                    <Image Source="/Images/CreateFunctions.png" 
+                           HorizontalAlignment="Stretch"
+               Stretch="Fill" Margin="-2,0,0,0" Width="37" Height="39" VerticalAlignment="Top" />
+                </telerik:RadMenuItem.Icon>
+
+
+
+            </telerik:RadMenuItem>
+
+            <telerik:RadMenuItem 
+                                 Name="uiDiscordIndexes"
+                                  ToolTip="Indexes" 
+                Margin="5,0,0,0"
+                                 Click="uiDiscordIndexes_Click">
+
+                <telerik:RadMenuItem.Icon>
+                    <Image Source="/Images/IndexesDiscord.png" 
+                           HorizontalAlignment="Stretch"
+               Stretch="Fill" Margin="-2,0,0,0" Width="37" Height="39" VerticalAlignment="Top" />
+                </telerik:RadMenuItem.Icon>
+
+
+
+            </telerik:RadMenuItem>
+
+            <telerik:RadMenuItem 
+                                 Name="uiCreateIndexes"
+                                  ToolTip="Indexes" 
+                Margin="5,0,0,0"
+                                 Click="uiCreateIndexes_Click">
+
+                <telerik:RadMenuItem.Icon>
+                    <Image Source="/Images/CreateIndexes.png" 
+                           HorizontalAlignment="Stretch"
+               Stretch="Fill" Margin="-2,0,0,0" Width="37" Height="39" VerticalAlignment="Top" />
+                </telerik:RadMenuItem.Icon>
+
+
+
+            </telerik:RadMenuItem>
+            
+
+        </telerik:RadMenu>
+
+
+    </Grid>
+</Window>

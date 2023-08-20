@@ -1,0 +1,23 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:wUtility.UserControls"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="wUtility.UserControls.DatabaseControl"
+             mc:Ignorable="d" Width="464.993" Height="54.194">
+    <Grid Background="Beige">
+        <CheckBox Name="uiDatabaseNameChb" Content="DatabaseName"
+          HorizontalAlignment="Left"
+         Margin="10,23,0,0" 
+         VerticalAlignment="Top" Height="21"/>
+        <telerik:RadButton Content="..." 
+               Name="uiConnectionStringBtn"
+               HorizontalAlignment="Left" Height="36" Margin="408,11,0,0" VerticalAlignment="Top" Width="50" telerik:StyleManager.Theme="Office2016"/>
+        <telerik:RadMaskedTextInput 
+            Name="uiConnectionStringTxt" HorizontalAlignment="Left" Margin="116,11,0,0" VerticalAlignment="Top" Width="287" Height="33"/>
+
+
+    </Grid>
+</UserControl>
+    

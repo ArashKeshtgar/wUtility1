@@ -1,0 +1,74 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wUtility"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="wUtility.Window1"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800"
+    WindowState= "Maximized">
+
+
+    <telerik:RadTabControl HorizontalAlignment="Stretch" Margin="0,4,0,10" ScrollViewer.HorizontalScrollBarVisibility="Visible" HorizontalContentAlignment="Stretch" FlowDirection="RightToLeft" TabStripPlacement="Left"     TabOrientation="Vertical" 
+                                             telerik:StyleManager.Theme="Green" Align="Right" Grid.Row="1" >
+        <telerik:RadTabItem x:Name="RadTabItem" Header="نمایش" Height="100" 
+    HorizontalAlignment="Left" VerticalAlignment="Top"                
+                        
+        Width="45" Margin="0">
+            <Grid Background="Transparent" Margin="0,1,0,0" HorizontalAlignment="Left" Width="689" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="326*"/>
+                    <ColumnDefinition Width="363*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="17*">
+
+                    </RowDefinition>
+                    <RowDefinition Height="171*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackPanel Margin="0,0,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2">
+
+
+                    <telerik:RadGridView HorizontalAlignment="Stretch" 
+  x:Name="uiSelectedDatabase"
+FlowDirection="RightToLeft" VerticalAlignment="Top" telerik:StyleManager.Theme="Green" Grid.Row="1" FontFamily="Tahoma" AutoGenerateColumns="False" Height="337" Margin="0,5,0,0" >
+                        <telerik:RadGridView.Columns>
+                            <telerik:GridViewDataColumn
+  DataMemberBinding="{Binding TABLE_NAME}"                                   
+                                    Header="TABLE_NAME" />
+
+
+                            <!--<telerik:GridViewDataColumn DataMemberBinding="{Binding fldMainDataBase}" Header="fldMainDataBase"/>-->
+
+
+
+                            <telerik:GridViewDataColumn 
+   DataMemberBinding="{Binding COLUMN_NAME}"                                 
+                                    Header="COLUMN_NAME" UniqueName="COLUMN_NAME" />
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>
+                </StackPanel>
+
+                <telerik:RadComboBox HorizontalAlignment="Left" Margin="29,-26,0,0" 
+    Name="uiDatababase"
+   VerticalAlignment="Top" Width="250" telerik:StyleManager.Theme="Green" Height="22"/>
+                <telerik:Label Content="Connected Database" HorizontalAlignment="Left" Margin="270,-26,0,0" VerticalAlignment="Top" Foreground="#FF256C28" Height="22" Width="120" Grid.ColumnSpan="2"/>
+                <telerik:RadComboBox HorizontalAlignment="Left" Margin="68.588,-27,0,0" 
+                        x:Name="uiDatababasesModelCmb"
+                        VerticalAlignment="Top" Width="155" telerik:StyleManager.Theme="Green" Height="22" Grid.Column="1"/>
+                <telerik:Label Content="Model" HorizontalAlignment="Left" Margin="242.588,-27,0,0" VerticalAlignment="Top" Foreground="#FF256C28" Height="22" Width="120" Grid.Column="1"/>
+            </Grid>
+
+        </telerik:RadTabItem>
+        <telerik:RadTabItem x:Name="RadTabItem1" Header="جزئیات" 
+    HorizontalAlignment="Left" VerticalAlignment="Top"                            
+    Height="100" Width="46" Margin="0">
+            <Grid Background="Transparent"/>
+        </telerik:RadTabItem>
+
+    </telerik:RadTabControl>
+
+
+</Window>

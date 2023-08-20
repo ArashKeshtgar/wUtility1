@@ -1,0 +1,94 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wUtility"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="wUtility.MainWindow"
+        mc:Ignorable="d"
+        Title="فرم اصلی" Height="450" Width="1400" WindowState="Maximized" FlowDirection="RightToLeft">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35*">
+
+            </RowDefinition>
+            <RowDefinition Height="384*">
+
+            </RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition>
+
+            </ColumnDefinition>
+            <ColumnDefinition>
+
+            </ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <telerik:RadMenu Margin="0,2,0,0" VerticalAlignment="Top" 
+                         Grid.Row="0"
+                         Grid.ColumnSpan="2"
+                         telerik:StyleManager.Theme="Green" Height="35">
+            <telerik:RadMenuItem Header="Total"
+                             Foreground="Green"
+                             >
+                <telerik:RadMenuItem 
+                    Foreground="Green"
+             Header="قرداد گلوبال پزشک"
+                                                
+                Click="RadMenuItem_Click_2"/>
+            </telerik:RadMenuItem>
+            <telerik:RadMenuItem Header="اموال"
+                             Foreground="Green"
+                             Click="RadMenuItem_Click_3"
+                             >
+               
+            </telerik:RadMenuItem>
+            <telerik:RadMenuItem Header="تنظیمات"
+                             Foreground="Green"
+                             >
+                <telerik:RadMenuItem Header="دیتابیس" 
+                                     Foreground="Green"
+                                     Click="RadMenuItem_Click"/>
+                <telerik:RadMenuItem
+                    Name="uiDefineItem" Header="تشابه"
+                    Foreground="Green"
+                    Click="uiDefineItem_Click"/>
+            </telerik:RadMenuItem>
+        </telerik:RadMenu>
+        <telerik:RadButton 
+telerik:StyleManager.Theme="Green"
+            Name="ui7Btn"
+            Content="Win 7" Grid.Column="1" 
+                           FlowDirection="LeftToRight"
+                           HorizontalAlignment="Left" Height="33" Margin="616,12,0,0" Grid.Row="1" VerticalAlignment="Top" Width="61"
+            Click="ui7Btn_Click"
+            />
+
+        <telerik:RadButton 
+telerik:StyleManager.Theme="Green"
+            Name="ui8Btn"
+            Content="Win 8" Grid.Column="1" 
+                           FlowDirection="LeftToRight"
+                           HorizontalAlignment="Left" Height="33" Margin="616,46,0,0" Grid.Row="1" VerticalAlignment="Top" Width="61"
+            Click="uiBtn_Click"
+            />
+
+        <telerik:RadButton 
+telerik:StyleManager.Theme="Green"
+            Name="uiOfficeBtn"
+            Content="Office" Grid.Column="1" 
+                           FlowDirection="LeftToRight"
+                           HorizontalAlignment="Left" Height="33" Margin="616,80,0,0" Grid.Row="1" VerticalAlignment="Top" Width="61"
+            Click="uiOfficeBtn_Click"
+            />
+
+        <telerik:RadButton 
+telerik:StyleManager.Theme="Green"
+            Name="uiCrystalBtn"
+            Content="Crystal" Grid.Column="1" 
+                           FlowDirection="LeftToRight"
+                           HorizontalAlignment="Left" Height="33" Margin="616,114,0,0" Grid.Row="1" VerticalAlignment="Top" Width="61"
+            Click="uiCrystalBtn_Click"
+            />
+    </Grid>
+</Window>
