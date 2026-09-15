@@ -1,0 +1,36 @@
+## Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Ll]og/
+[Ll]ogs/
+
+## Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## Compiled binaries / vendor libraries — never commit these
+*.exe
+*.dll
+*.pdb
+Telerik.*
+DevExpress.*
+
+## Deployment configs that can carry real connection strings — never commit these
+*.exe.config
+*.exe.Config
+
+## Archives / local backups
+*.rar
+*.zip
+*.7z
+Bk/
