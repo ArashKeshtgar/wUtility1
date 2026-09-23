@@ -1,0 +1,38 @@
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  font-family: -apple-system, "Segoe UI", Tahoma, sans-serif;
+  background: #12161a;
+  color: #edf1ee;
+}
+
+.page-content { max-width: 1000px; margin: 0 auto; padding: 28px 16px 60px; }
+.page-content h1 { margin: 0 0 4px; font-size: 1.4rem; }
+.subtitle { color: #9aa5a0; font-size: 0.9rem; margin: 0 0 24px; }
+
+table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+th, td { text-align: right; padding: 8px 10px; border-bottom: 1px solid #2b3330; }
+th { color: #9aa5a0; font-weight: 600; font-size: 0.72rem; }
+tr.row-clickable { cursor: pointer; }
+tr.row-clickable:hover { background: #1b2126; }
+
+button {
+  background: #3fcdb8; color: #0b1a17; border: none; border-radius: 8px;
+  padding: 9px 18px; font-weight: 700; font-size: 0.88rem; cursor: pointer;
+  font-family: inherit;
+}
+button:disabled { opacity: 0.6; cursor: default; }
+button.secondary { background: #2b3330; color: #edf1ee; }
+button.danger { background: #b8534a; color: #fff; }
+
+.error {
+  background: #3a1616; color: #f3a3a3; border: 1px solid #5a2626;
+  padding: 10px 14px; border-radius: 8px; margin-bottom: 16px; font-size: 0.85rem;
+}
+.empty { color: #4fd07f; font-size: 0.85rem; }
+
+input, select {
+  background: #12161a; border: 1px solid #2b3330; color: #edf1ee;
+  border-radius: 6px; padding: 8px 10px; font-family: inherit; font-size: 0.85rem;
+}

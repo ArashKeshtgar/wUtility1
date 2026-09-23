@@ -1,0 +1,53 @@
+<div class="page-content">
+  <h1>مقایسه و همگام‌سازی اسکیما</h1>
+  <p class="subtitle">پورت وب فرم SimilarityDatabaseForm — مقایسه‌ی دو دیتابیس SQL Server و تولید اسکریپت</p>
+
+  <section class="connections">
+    <div class="field">
+      <label>Connection String مبدأ (اسکیمای مرجع)</label>
+      <input [(ngModel)]="sourceConnectionString" />
+    </div>
+    <div class="field">
+      <label>Connection String مقصد (چیزی که باید آپدیت بشه)</label>
+      <input [(ngModel)]="targetConnectionString" />
+    </div>
+    <button (click)="compare()" [disabled]="comparing">
+      {{ comparing ? 'در حال مقایسه…' : 'مقایسه' }}
+    </button>
+  </section>
+
+  <div class="error" *ngIf="error">{{ error }}</div>
+
+  <section *ngIf="result" class="result">
+    <h2>تفاوت‌ها ({{ result.diffs.length }})</h2>
+    <table *ngIf="result.diffs.length; else noDiffs">
+      <thead>
+        <tr><th>نوع</th><th>جدول</th><th>ستون</th><th>توضیح</th></tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let d of result.diffs">
+          <td>{{ diffLabels[d.kind] }}</td>
+          <td>{{ d.tableName }}</td>
+          <td>{{ d.columnName ?? '—' }}</td>
+          <td>{{ d.description }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #noDiffs><p class="empty">هیچ تفاوتی نیست — مقصد کاملاً هم‌راستای مبدأست.</p></ng-template>
+
+    <div *ngIf="result.diffs.length">
+      <h2>اسکریپت تولیدشده</h2>
+      <pre class="script">{{ result.script }}</pre>
+      <button (click)="applyScript()" [disabled]="executing" class="apply-btn">
+        {{ executing ? 'در حال اجرا…' : 'اجرای اسکریپت روی مقصد' }}
+      </button>
+    </div>
+
+    <div *ngIf="executeResult" class="execute-result" [class.success]="executeResult.success">
+      <p *ngIf="executeResult.success">
+        ✅ {{ executeResult.executedStatements.length }} دستور با موفقیت اجرا شد. مقایسه‌ی مجدد صفر تفاوت نشون داد.
+      </p>
+      <p *ngIf="!executeResult.success">❌ {{ executeResult.error }}</p>
+    </div>
+  </section>
+</div>

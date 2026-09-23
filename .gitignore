@@ -34,3 +34,8 @@ DevExpress.*
 *.zip
 *.7z
 Bk/
+
+## web/ (Angular + .NET) build output
+web/frontend/node_modules/
+web/frontend/.angular/
+web/frontend/dist/

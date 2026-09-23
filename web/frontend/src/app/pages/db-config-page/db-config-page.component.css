@@ -1,0 +1,5 @@
+:host { display: block; }
+
+.badge { font-size: 0.7rem; padding: 2px 8px; border-radius: 999px; font-weight: 600; }
+.badge.active { background: #173a26; color: #4fd07f; }
+.badge.inactive { background: #3a1616; color: #f3a3a3; }

@@ -1,0 +1,53 @@
+<div class="page-content">
+  <h1>خزانه‌ی اتصال‌ها</h1>
+  <p class="subtitle">
+    پورت وب Connections.xaml — به‌جای تنظیمات محلی رمزنگاری‌شده‌ی هر ماژول روی یک دستگاه،
+    یک خزانه‌ی سمت سرور با AES-256-GCM. رشته‌ی اتصال بعد از ذخیره هرگز از سرور برنمی‌گردد.
+  </p>
+
+  <div class="error" *ngIf="error">{{ error }}</div>
+
+  <div class="module-select">
+    <label>ماژول</label>
+    <select [(ngModel)]="selectedModule" (ngModelChange)="onModuleChange()">
+      <option *ngFor="let m of modules" [value]="m">{{ m }}</option>
+    </select>
+  </div>
+
+  <button (click)="startAdd()" *ngIf="!adding">+ افزودن اتصال جدید</button>
+
+  <div class="edit-card" *ngIf="adding">
+    <div class="field">
+      <label>نام نمایشی</label>
+      <input [(ngModel)]="newConnection.displayName" placeholder="مثلاً: بیمارستان شفا" />
+    </div>
+    <div class="field">
+      <label>Connection String</label>
+      <input [(ngModel)]="newConnection.connectionString" class="mono" />
+    </div>
+    <div class="actions">
+      <button (click)="save()">ذخیره (رمزنگاری‌شده)</button>
+      <button class="secondary" (click)="cancelAdd()">انصراف</button>
+    </div>
+  </div>
+
+  <p *ngIf="loading">در حال بارگذاری…</p>
+
+  <table *ngIf="!loading && connections.length">
+    <thead>
+      <tr><th>نام نمایشی</th><th>تاریخ ثبت</th><th>وضعیت تست</th><th></th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of connections">
+        <td>{{ c.displayName }}</td>
+        <td>{{ c.createdAt | date: 'yyyy-MM-dd HH:mm' }}</td>
+        <td>{{ testResults[c.id] ?? '—' }}</td>
+        <td class="row-actions">
+          <button class="secondary" (click)="test(c)">تست اتصال</button>
+          <button class="danger" (click)="remove(c)">حذف</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p *ngIf="!loading && !connections.length" class="empty">هیچ اتصالی برای این ماژول ثبت نشده.</p>
+</div>

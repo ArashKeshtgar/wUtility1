@@ -1,0 +1,30 @@
+<div class="page-content">
+  <h1>دیتابیس‌های سایت‌ها</h1>
+  <p class="subtitle">پورت وب گرید بالای DatabasesForm — لیست Tbl_dbConfigSetting (فقط نمایشی، در نسخه‌ی اصلی هم فقط خواندنی است)</p>
+
+  <div class="error" *ngIf="error">{{ error }}</div>
+  <p *ngIf="loading">در حال بارگذاری…</p>
+
+  <table *ngIf="!loading && settings.length">
+    <thead>
+      <tr>
+        <th>ماژول</th><th>نام دیتابیس</th><th>توضیح فارسی</th><th>فعال</th><th>Instance</th><th>Instance دوم</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of settings">
+        <td>{{ s.fldMainDataBase }}</td>
+        <td>{{ s.fldDataBaseName }}</td>
+        <td>{{ s.fldPersianDescDataBase ?? '—' }}</td>
+        <td>
+          <span [class.active]="s.fldIsActive" [class.inactive]="!s.fldIsActive" class="badge">
+            {{ s.fldIsActive ? 'فعال' : 'غیرفعال' }}
+          </span>
+        </td>
+        <td>{{ s.fldInstanceName ?? '—' }}</td>
+        <td>{{ s.fldSecondInstance ?? '—' }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <p *ngIf="!loading && !settings.length" class="empty">هیچ رکوردی ثبت نشده.</p>
+</div>

@@ -1,0 +1,16 @@
+:host { display: block; }
+
+.module-select { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.module-select label { font-size: 0.82rem; color: #9aa5a0; }
+
+.edit-card {
+  background: #1b2126; border: 1px solid #2b3330; border-radius: 10px;
+  padding: 16px 18px; margin: 14px 0 20px; display: flex; flex-direction: column; gap: 10px;
+  max-width: 500px;
+}
+.field { display: flex; flex-direction: column; gap: 4px; }
+.field label { font-size: 0.78rem; color: #9aa5a0; }
+.field input.mono { font-family: ui-monospace, monospace; font-size: 0.8rem; direction: ltr; text-align: left; }
+.actions { display: flex; gap: 8px; margin-top: 4px; }
+.row-actions { display: flex; gap: 6px; justify-content: flex-end; }
+.row-actions button { padding: 5px 10px; font-size: 0.78rem; }

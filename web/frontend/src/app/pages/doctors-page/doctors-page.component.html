@@ -1,0 +1,22 @@
+<div class="page-content">
+  <h1>پزشکان</h1>
+  <p class="subtitle">پورت وب فرم DoctorsForm — روی هر ردیف کلیک کنید تا گروه‌های قیمتی آن پزشک باز شود</p>
+
+  <div class="error" *ngIf="error">{{ error }}</div>
+  <p *ngIf="loading">در حال بارگذاری…</p>
+
+  <table *ngIf="!loading && doctors.length">
+    <thead>
+      <tr><th>کد</th><th>نام کامل</th><th>نام</th><th>نام خانوادگی</th><th>کد پستی</th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of doctors" (click)="openPriceGroups(d)" class="row-clickable">
+        <td>{{ d.code }}</td>
+        <td>{{ d.name }}</td>
+        <td>{{ d.fName }}</td>
+        <td>{{ d.lName }}</td>
+        <td>{{ d.postNo ?? '—' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

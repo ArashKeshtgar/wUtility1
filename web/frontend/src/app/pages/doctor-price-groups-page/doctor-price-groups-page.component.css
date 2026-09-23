@@ -1,0 +1,15 @@
+:host { display: block; }
+
+.back-link { color: #9aa5a0; font-size: 0.82rem; text-decoration: none; display: inline-block; margin-bottom: 10px; }
+.back-link:hover { color: #edf1ee; }
+
+.edit-card {
+  background: #1b2126; border: 1px solid #2b3330; border-radius: 10px;
+  padding: 16px 18px; margin: 14px 0 20px; display: flex; flex-direction: column; gap: 10px;
+  max-width: 400px;
+}
+.field { display: flex; flex-direction: column; gap: 4px; }
+.field label { font-size: 0.78rem; color: #9aa5a0; }
+.actions { display: flex; gap: 8px; margin-top: 4px; }
+.row-actions { display: flex; gap: 6px; justify-content: flex-end; }
+.row-actions button { padding: 5px 10px; font-size: 0.78rem; }

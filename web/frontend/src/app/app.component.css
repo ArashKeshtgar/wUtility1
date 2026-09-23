@@ -1,0 +1,10 @@
+.shell { min-height: 100vh; }
+
+nav {
+  display: flex; align-items: center; gap: 20px;
+  padding: 14px 20px; border-bottom: 1px solid #2b3330; background: #1b2126;
+}
+nav .brand { font-weight: 700; margin-left: auto; color: #9aa5a0; font-size: 0.85rem; }
+nav a { color: #9aa5a0; text-decoration: none; font-size: 0.88rem; padding: 4px 2px; }
+nav a:hover { color: #edf1ee; }
+nav a.active { color: #3fcdb8; font-weight: 700; }

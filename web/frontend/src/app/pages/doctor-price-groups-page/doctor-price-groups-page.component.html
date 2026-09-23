@@ -1,0 +1,51 @@
+<div class="page-content">
+  <a routerLink="/doctors" class="back-link">← بازگشت به لیست پزشکان</a>
+  <h1>گروه‌های قیمتی</h1>
+  <p class="subtitle">پزشک: {{ drName }} (کد {{ drCode }}) — پورت وب فرم DoctorsPriceGroupsForm</p>
+
+  <div class="error" *ngIf="error">{{ error }}</div>
+
+  <button (click)="startAdd()" *ngIf="editingRowGd === null">+ افزودن گروه قیمتی جدید</button>
+
+  <div class="edit-card" *ngIf="editingRowGd !== null">
+    <div class="field">
+      <label>نوع کار (Work)</label>
+      <select [(ngModel)]="editForm.wCode">
+        <option [ngValue]="null">—</option>
+        <option *ngFor="let w of works" [ngValue]="w.code">{{ w.name }}</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>سهم مرکز (CenterSharePrice)</label>
+      <input type="number" [(ngModel)]="editForm.centerSharePrice" />
+    </div>
+    <div class="field">
+      <label>عنوان (Title)</label>
+      <input [(ngModel)]="editForm.title" />
+    </div>
+    <div class="actions">
+      <button (click)="save()">ذخیره</button>
+      <button class="secondary" (click)="cancelEdit()">انصراف</button>
+    </div>
+  </div>
+
+  <p *ngIf="loading">در حال بارگذاری…</p>
+
+  <table *ngIf="!loading">
+    <thead>
+      <tr><th>عنوان</th><th>نوع کار</th><th>سهم مرکز</th><th></th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of priceGroups">
+        <td>{{ row.title ?? '—' }}</td>
+        <td>{{ row.wName ?? '—' }}</td>
+        <td>{{ row.centerSharePrice ?? '—' }}</td>
+        <td class="row-actions">
+          <button class="secondary" (click)="startEdit(row)">ویرایش</button>
+          <button class="danger" (click)="delete(row)">حذف</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p *ngIf="!loading && !priceGroups.length" class="empty">هیچ گروه قیمتی برای این پزشک ثبت نشده.</p>
+</div>
