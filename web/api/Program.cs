@@ -1,6 +1,22 @@
+using System.Security.Cryptography;
+using System.Text;
 using SchemaSyncApi;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Every /api route requires the X-Api-Key header. Without it, /api/execute
+// would run any SQL against any server reachable from this host for anyone
+// who can reach this port. There is no fallback key: the app refuses to
+// start without WUTILITY_API_KEY. Callers: Control Panel's wutility-adapter,
+// and the Angular dev server's proxy (frontend/proxy.conf.js), which adds
+// the header server-side so the key never ships to the browser.
+var apiKey = builder.Configuration["WUTILITY_API_KEY"];
+if (string.IsNullOrEmpty(apiKey) || apiKey.Length < 32)
+{
+    throw new InvalidOperationException(
+        "WUTILITY_API_KEY must be set to a random value of at least 32 characters.");
+}
+var apiKeyBytes = Encoding.UTF8.GetBytes(apiKey);
 
 builder.Services.AddOpenApi();
 builder.Services.AddSingleton<SchemaReader>();
@@ -27,6 +43,22 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors(AngularDevCors);
+
+app.Use(async (context, next) =>
+{
+    if (context.Request.Path.StartsWithSegments("/api"))
+    {
+        var provided = Encoding.UTF8.GetBytes(context.Request.Headers["X-Api-Key"].ToString());
+        // Constant-time comparison, so response timing doesn't leak the key.
+        if (!CryptographicOperations.FixedTimeEquals(provided, apiKeyBytes))
+        {
+            context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+            await context.Response.WriteAsJsonAsync(new { error = "Missing or invalid X-Api-Key header." });
+            return;
+        }
+    }
+    await next();
+});
 
 app.MapPost("/api/compare", async (CompareRequest req, SchemaReader reader, SchemaDiffer differ, ScriptGenerator generator) =>
 {

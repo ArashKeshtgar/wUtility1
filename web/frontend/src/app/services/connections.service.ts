@@ -20,7 +20,9 @@ export interface TestConnectionResult {
   error: string | null;
 }
 
-const API_BASE = 'http://localhost:5091/api';
+// Relative: the dev server proxies /api to the .NET API and adds the API
+// key there (proxy.conf.js), so the key never ships in the browser bundle.
+const API_BASE = '/api';
 
 @Injectable({ providedIn: 'root' })
 export class ConnectionsService {

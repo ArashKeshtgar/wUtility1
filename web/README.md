@@ -37,3 +37,16 @@ All of the above were tested against real SQL Server data on `(local)` (dedicate
 
 - Schema compare correctly detected a missing table, a missing column, and a column type mismatch; the generated script was executed and a re-compare confirmed zero remaining diffs.
 - Doctors → price-groups navigation, add, and edit were exercised end-to-end through the actual browser UI, with real inserts/updates verified in the database.
+
+## Running it (API key required)
+
+Every `/api/*` route requires an `X-Api-Key` header. Without it, `/api/execute` (which runs a script against a target server) would be open to anyone who can reach the port. The API refuses to start unless `WUTILITY_API_KEY` is set to a random value of at least 32 characters. There is no default.
+
+```bash
+# PowerShell: $env:WUTILITY_API_KEY = "<random 32+ chars>"
+cd api && dotnet run                  # :5091
+cd frontend && npm start              # :4300, same WUTILITY_API_KEY in the environment
+```
+
+The Angular app calls a relative `/api`. In development, `ng serve` proxies it to the API through `frontend/proxy.conf.js`, which adds the key on the server side, so the key never ends up in the browser bundle. Control Panel's `wutility-adapter` sends the same header. This is service-to-service protection, not user authentication: a real deployment would still need user login in front of the schema-sync pages.
+
