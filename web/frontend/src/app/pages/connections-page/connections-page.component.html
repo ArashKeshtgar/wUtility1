@@ -6,6 +6,9 @@
   </p>
 
   <div class="error" *ngIf="error">{{ error }}</div>
+  <p class="demo-note" *ngIf="readOnly">
+    در دموی عمومی خزانه فقط‌خواندنی است: افزودن یا تست یک Connection String یعنی سرور به هر آدرسی که کاربر بدهد وصل شود.
+  </p>
 
   <div class="module-select">
     <label>ماژول</label>
@@ -14,7 +17,7 @@
     </select>
   </div>
 
-  <button (click)="startAdd()" *ngIf="!adding">+ افزودن اتصال جدید</button>
+  <button (click)="startAdd()" *ngIf="!adding && !readOnly">+ افزودن اتصال جدید</button>
 
   <div class="edit-card" *ngIf="adding">
     <div class="field">
@@ -42,7 +45,7 @@
         <td>{{ c.displayName }}</td>
         <td>{{ c.createdAt | date: 'yyyy-MM-dd HH:mm' }}</td>
         <td>{{ testResults[c.id] ?? '—' }}</td>
-        <td class="row-actions">
+        <td class="row-actions" *ngIf="!readOnly">
           <button class="secondary" (click)="test(c)">تست اتصال</button>
           <button class="danger" (click)="remove(c)">حذف</button>
         </td>

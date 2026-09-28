@@ -14,3 +14,5 @@
 .actions { display: flex; gap: 8px; margin-top: 4px; }
 .row-actions { display: flex; gap: 6px; justify-content: flex-end; }
 .row-actions button { padding: 5px 10px; font-size: 0.78rem; }
+
+.demo-note { color: #9aa5a0; font-size: 0.82rem; line-height: 1.7; }

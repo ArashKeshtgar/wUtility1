@@ -6,6 +6,7 @@ import {
   SiteConnectionSummary,
   AddSiteConnection
 } from '../../services/connections.service';
+import { DemoService } from '../../services/demo.service';
 
 // Web port of Connections.xaml.cs — but a real server-side vault instead of
 // the original's per-module local encrypted app settings. Connection strings
@@ -30,10 +31,12 @@ export class ConnectionsPageComponent implements OnInit {
   newConnection: AddSiteConnection = { moduleName: '', displayName: '', connectionString: '' };
 
   testResults: Record<number, string> = {};
+  readOnly = false;
 
-  constructor(private api: ConnectionsService) {}
+  constructor(private api: ConnectionsService, private demo: DemoService) {}
 
   ngOnInit(): void {
+    this.demo.info$.subscribe((info) => (this.readOnly = info.enabled));
     this.api.getModules().subscribe((modules) => {
       this.modules = modules;
       this.selectedModule = modules[0];

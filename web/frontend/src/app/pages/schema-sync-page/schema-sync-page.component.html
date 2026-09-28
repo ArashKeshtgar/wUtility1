@@ -2,7 +2,26 @@
   <h1>مقایسه و همگام‌سازی اسکیما</h1>
   <p class="subtitle">پورت وب فرم SimilarityDatabaseForm — مقایسه‌ی دو دیتابیس SQL Server و تولید اسکریپت</p>
 
-  <section class="connections">
+  <section class="connections" *ngIf="demo?.enabled">
+    <p class="demo-note">
+      دموی عمومی: مقایسه همیشه بین دو دیتابیس آزمایشی روی Azure SQL انجام می‌شود و فقط همان اسکریپتی که
+      سرور تولید می‌کند قابل اجراست.
+    </p>
+    <div class="demo-dbs">
+      <div><span class="label">مبدأ</span> <code>{{ demo?.sourceDatabase }}</code></div>
+      <div><span class="label">مقصد</span> <code>{{ demo?.targetDatabase }}</code></div>
+    </div>
+    <div class="actions">
+      <button (click)="compare()" [disabled]="comparing">
+        {{ comparing ? 'در حال مقایسه…' : 'مقایسه' }}
+      </button>
+      <button class="secondary" (click)="resetDemo()" [disabled]="resetting">
+        {{ resetting ? 'در حال بازنشانی…' : 'بازنشانی دیتابیس مقصد' }}
+      </button>
+    </div>
+  </section>
+
+  <section class="connections" *ngIf="demo && !demo.enabled">
     <div class="field">
       <label>Connection String مبدأ (اسکیمای مرجع)</label>
       <input [(ngModel)]="sourceConnectionString" />

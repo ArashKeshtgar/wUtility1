@@ -39,3 +39,8 @@ Bk/
 web/frontend/node_modules/
 web/frontend/.angular/
 web/frontend/dist/
+
+## wUtility Web deployment outputs and secrets
+web/out/
+web/api/wwwroot/
+web/deploy/azure/.secrets.json

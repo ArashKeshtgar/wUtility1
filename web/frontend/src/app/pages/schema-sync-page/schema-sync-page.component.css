@@ -45,3 +45,10 @@ th { color: #9aa5a0; font-weight: 600; font-size: 0.72rem; }
   background: #3a1616; color: #f3a3a3; border: 1px solid #5a2626;
 }
 .execute-result.success { background: #173a26; color: #4fd07f; border-color: #1f9d55; }
+
+.demo-note { margin: 0; color: #9aa5a0; font-size: 0.82rem; line-height: 1.7; }
+.demo-dbs { display: flex; gap: 24px; flex-wrap: wrap; font-size: 0.85rem; }
+.demo-dbs .label { color: #9aa5a0; font-size: 0.78rem; margin-left: 6px; }
+.demo-dbs code { font-family: ui-monospace, monospace; color: #3fcdb8; }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; }
+button.secondary { background: transparent; color: #edf1ee; border: 1px solid #2b3330; }
